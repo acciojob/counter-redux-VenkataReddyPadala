@@ -1,13 +1,19 @@
-
 import React from "react";
-import './../styles/App.css';
+import "./../styles/App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../store/CounterSlice";
 
 const App = () => {
+  const count = useSelector((store) => store.counter.count);
+  const dispatch = useDispatch();
   return (
     <div>
-        {/* Do not remove the main div */}
+      {/* Do not remove the main div */}
+      <h1>{count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
